@@ -5,31 +5,41 @@
     <title>{% block title %} {% endblock %}İlk Django Projem </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta content="Free HTML Templates" name="keywords">
+  <meta content="Free HTML Templates" name="descriptions">
+
+
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link href="{% static 'css/open-iconic-bootstrap.min.css' %}" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link href="{% static 'css/animate.css' %}" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/aos.css">
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/owl.theme.default.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/magnific-popup.css' %}" rel="stylesheet" >
 
-    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link href="{% static 'css/aos.css' %}" rel="stylesheet" >
 
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link href="{% static 'css/ionicons.min.css' %}" rel="stylesheet" >
+
+    <link href="{% static 'css/flaticon.css' %}" rel="stylesheet">
+    <link href="{% static 'css/icomoon.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" >
     {% block head %} {% endblock %}
   </head>
 <body>
 <div>
-    {% include 'header.html' %}
-    {% block leftsidebar %}{% endblock %}
-    {% block content %}{% endblock %}
-   {% block rightsidebar %}{% endblock %}
+    {% block header %}{% include 'header.html' %}{% endblock %}
+</body>
+   {% block slider %}{% include 'slider.html' %}{% endblock %}
+</body>
+    {% block content %}{% include 'content.html' %}{% endblock %}
+</body>
+   {% block sidebar %}{% include 'sidebar.html' %}{% endblock %}
+</body>
+
 </div>
 {% block footer %}{% include 'footer.html' %}{% endblock %}
 </body>
