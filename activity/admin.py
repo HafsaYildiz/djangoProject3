@@ -17,7 +17,10 @@ class activityAdmin(admin.ModelAdmin):
 class imagesAdmin(admin.ModelAdmin):
     list_display = ['title','activity','images']
 # Register your models here.
+
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(activity, activityAdmin)
-
 admin.site.register(Images,imagesAdmin)
+
+
+
