@@ -3,9 +3,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav mr-auto">
                 {% for i in category %}
-	        	<li class="nav-item active"><a href="/category/{{  i.id }}/{{ i.slug }}" class="nav-link pl-0">{{ i.title }}</a></li>
+	        	<li class="nav-item active"> <a href="/category/{{ i.id }}/{{ i.slug }}" class="nav-link pl-0">{{ i.title }}</a></li>
              {% endfor %}
 	        </ul>
 	      </div>
-	    </div>
-	  </nav>

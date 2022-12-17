@@ -9,7 +9,6 @@ class CategoryAdmin(admin.ModelAdmin):
 class ActivityImageInLine(admin.TabularInline):
     model = Images
     extra = 5
-
 class activityAdmin(admin.ModelAdmin):
     list_display = ['title', 'image_tag']
     readonly_fields = ('image_tag',)
@@ -21,6 +20,5 @@ class imagesAdmin(admin.ModelAdmin):
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(activity, activityAdmin)
 admin.site.register(Images,imagesAdmin)
-
 
 
