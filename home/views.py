@@ -24,6 +24,7 @@ def category_activitys(request, id, slug):
 
 def activity_detail(request, id, slug):
     category = Category.objects.all()
-    context =
+    context = {'category': category}
+    return render(request, 'activity_detail.html', context)
 
     return None

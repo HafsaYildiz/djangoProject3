@@ -1,6 +1,10 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import ForeignKey
+from django.urls import reverse
 from django.utils.safestring import mark_safe
+
+import activity
 
 
 # Create your models here.
@@ -40,6 +44,8 @@ class activity(models.Model):
 
     def __str__(self):
         return self.title
+    def get_absolute_url(self):
+        return reverse('category_activitys', kwargs={'slug': self.slug})
 
     class news(models.Model):
         STATUS = (
@@ -61,6 +67,8 @@ class activity(models.Model):
 
         def __str__(self):
             return self.title
+
+
     def image_tag(self):
         return mark_safe('<img src="{}" height="50"/>'.format(self.image.url))
         image_tag.short_description = 'Image'
