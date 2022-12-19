@@ -28,3 +28,9 @@ def activity_detail(request, id, slug):
     return render(request, 'activity_detail.html', context)
 
     return None
+
+
+def contact(request):
+    return render(request, 'contact.html')
+def about(request):
+    return render(request, 'about.html')

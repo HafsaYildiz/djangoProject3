@@ -53,14 +53,14 @@ class activity(models.Model):
             ('false', 'hayır'),
         )
         category = models.ForeignKey(Category, on_delete=models.CASCADE)  # category tablosu ile iliskilendirme
-        title = models.CharField(max_length=50)
+        title = models.CharField(max_length=100)
         description = models.CharField(blank=True, max_length=500)
         keywords = models.ImageField(blank=True, max_length=200)
         image = models.ImageField(blank=True, upload_to='images/')
         subject = models.CharField(blank=True, max_length=500)
         detail = models.TextField()
         when = models.TextField()
-        status = models.CharField(max_length=10, choices=STATUS)
+        status = models.CharField(max_length=100, choices=STATUS)
         slug = models.SlugField(null=False, unique=True)
         parent = ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
         create_at = models.DateTimeField(auto_now_add=True)
