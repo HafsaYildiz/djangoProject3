@@ -34,3 +34,11 @@ def contact(request):
     return render(request, 'contact.html')
 def about(request):
     return render(request, 'about.html')
+def teacher(request):
+    return render(request, 'teacher.html')
+def courses(request):
+    return render(request, 'courses.html')
+def blog(request):
+    return render(request, 'blog.html')
+def blog_single(request):
+    return render(request, 'blog-single.html')

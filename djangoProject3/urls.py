@@ -27,6 +27,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
+    path('teacher/', views.teacher, name='teacher'),
+    path('courses/', views.courses, name='courses'),
+    path('blog/', views.blog, name='blog'),
+    path('blog-single/',views.blog_single, name='blog-single'),
     path('category/<int:id>/<slug:slug>', views.category_activitys, name='category_activitys'),
     path('activity/<int:id>/<slug:slug>', views.activity_detail, name='activity_detail')
 ]
