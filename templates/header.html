@@ -76,8 +76,12 @@
 	          <li class="nav-item active"><a href="contact/" class="nav-link">Contact</a></li>
 	        </ul>
                  {% for i in category %}
-	        	<li class="nav-item active"><a href="category/{{ i.id}}/{{ i.slug }}" class="nav-link pl-0">{{ i.title }}</a></li>
+	        	<li class="nav-item active"><a href="activity/{{ i.id}}/{{ i.slug }}" class="nav-link pl-0">{{ i.title }}</a></li>
              {% endfor %}
+          {% for i in news %}
+          <li class="nav-item active"><a href="news/{{ i.id}}/{{ i.slug }}" class="nav-link pl-0">{{ i.title }}</a></li>
+             {% endfor %}
+
 	      </div>
 	    </div>
 	  </nav>
