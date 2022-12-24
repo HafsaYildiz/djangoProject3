@@ -79,8 +79,16 @@ class Images(models.Model):
     def __str__(self):
         return self.title
 
+class comment(models.Model):
+    name = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    comment = models.CharField(max_length=400)
+    activity_id = models.CharField(max_length=15)
 
-
-
-
+class mesaj(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.CharField(max_length=50)
+    title = models.CharField(max_length=40)
+    message = models.CharField(max_length=400)
 

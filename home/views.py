@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from activity.models import Category, activity
+from home.models import message
 
 
 # Create your views here.
@@ -20,6 +21,19 @@ def category_activitys(request, id, slug):
                'activity': Activity,
                'categoryDataAll': category}
     return render(request, 'category_activitys.html', context)
+
+def contact(request):
+    if request.method == "POST":
+        m = message()
+        m.name = request.POST["name"]
+        m.email = request.POST["email"]
+        m.title = request.POST["title"]
+        m.message = request.POST["message"]
+        m.save()
+        return render(request, 'contact.html')
+    else:
+        return render(request, 'contact.html')
+
 
 
 def activity_detail(request, id, slug):
