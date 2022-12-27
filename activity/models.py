@@ -1,10 +1,13 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.db.models import ForeignKey
+from django.forms import ModelForm
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 
+
 import activity
+from home.models import comment, CommentForm
 
 
 # Create your models here.
@@ -22,8 +25,9 @@ class Category(models.Model):
     parent = ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
-    def __str__(self):
+    def _str_(self):
         return self.title
+
 class activity(models.Model):
     STATUS = (
         ('true', 'evet'),
@@ -42,7 +46,7 @@ class activity(models.Model):
     parent = ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
+    def _str_(self):
         return self.title
     def get_absolute_url(self):
         return reverse('category_activitys', kwargs={'slug': self.slug})
@@ -65,7 +69,7 @@ class activity(models.Model):
         parent = ForeignKey('self', blank=True, null=True, related_name='children', on_delete=models.CASCADE)
         create_at = models.DateTimeField(auto_now_add=True)
 
-        def __str__(self):
+        def _str_(self):
             return self.title
 
 
@@ -76,19 +80,17 @@ class Images(models.Model):
     title = models.CharField(max_length=50)
     activity = models.ForeignKey(activity, on_delete=models.CASCADE)
     images = models.ImageField(blank=True, upload_to='images/')
-    def __str__(self):
+    def _str_(self):
         return self.title
 
-class comment(models.Model):
+class Comment(models.Model):
     name = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
-    comment = models.CharField(max_length=400)
-    activity_id = models.CharField(max_length=15)
+    title = models.CharField(max_length=40)
+    message = models.CharField(max_length=400)
 
 class mesaj(models.Model):
     name = models.CharField(max_length=50)
     email = models.CharField(max_length=50)
     title = models.CharField(max_length=40)
     message = models.CharField(max_length=400)
-

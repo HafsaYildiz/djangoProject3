@@ -1,28 +1,102 @@
- {% load static %}
-    <section class="home-slider owl-carousel">
-      <div class="slider-item" style="background-image:url({% static 'images/bg_1.jpg'%});">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate">
-            <h1 class="mb-4">Education Needs Complete Solution</h1>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            <p><a href="../contact/" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
-          </div>
-        </div>
-        </div>
-      </div>
+{% load static %}
+ <style>
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
 
-      <div class="slider-item" style="background-image:url({% static 'images/bg_2.jpg'%});">
-      	<div class="overlay"></div>
-        <div class="container">
-          <div class="row no-gutters slider-text align-items-center justify-content-start" data-scrollax-parent="true">
-          <div class="col-md-6 ftco-animate">
-            <h1 class="mb-4">University, College School Education</h1>
-            <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-            <p><a href="../contact/" class="btn btn-primary px-4 py-3 mt-3">Contact Us</a></p>
-          </div>
-        </div>
-        </div>
+  .button{
+    padding: 8px;
+    width: 100px;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.1s;
+    background-color:black;
+  }
+
+  .button:hover{
+    transform: scale(1.05);
+    background-color:black;
+  }
+
+  .containerr{
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .pagess {
+    display: flex;
+    width: {{deger}}%;
+    box-sizing: border-box;
+  }
+
+  .pagee {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    transition: all 0.7s;
+    color: white;
+
+  }
+  .imgdiv{
+    position:absolute;
+    z-index:999;
+    background-color:rgba(255,255,255,0.5);
+    border-radius:20px;
+  }
+ </style>
+ <div class="containerr">
+  <div class="pagess">
+
+    {% for i in activity %}
+    <div class="pagee" style="background-image: url(http://127.0.0.1:8000/media/hitabet.jpg)">
+      <img src="{% static 'img/'%}{{i.image}}" width="100%">
+
+      <div class="imgdiv">
+        <h1 >{{i.title}}</h1>
+        <center><h3>{{i.when}}</h3></center>
+        <center>
+        <button class="button" onClick="slide('prev')">Previous</button>
+        <button class="button" onClick="slide('next')">Next</button>
+      </center>
       </div>
-    </section>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+<script>
+  const pages = document.querySelectorAll(".pagee");
+    const translateAmount = 100;
+    let translate = 0;
+    let deger = {{deger}}-100;
+    slide = (direction) => {
+      switch(translate) {
+        case 0:
+          direction === "next" ? translate -= translateAmount : translate -= deger;
+          break;
+        case 400:
+          direction === "next" ? translate -= deger : translate -=translateAmount ;
+          break;
+        default:
+          direction === "next" ? translate -= translateAmount : translate +=translateAmount ;
+      }
+      pages.forEach(
+
+        pages => (pages.style.transform = `translateX(${translate}%)`)
+
+      );
+    }
+
+
+    setInterval(slide, 3000);
+</script>

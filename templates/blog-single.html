@@ -192,23 +192,24 @@
 
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5 h4 font-weight-bold">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
+                <form method="post" class="p-5 bg-light">
+                  {% csrf_token %}
                   <div class="form-group">
                     <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
+                    <input type="text" class="form-control" id="name" name="name">
                   </div>
                   <div class="form-group">
                     <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" name="email">
                   </div>
                   <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
+                    <label for="website">Title</label>
+                    <input  class="form-control" id="website" name="title">
                   </div>
 
                   <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <textarea name="comment" id="message" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
@@ -419,4 +420,3 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{% static 'js/google-map.js'%}"></script>
   <script src="{% static 'js/main.js'%}"></script>
-
